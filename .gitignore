@@ -1,0 +1,14 @@
+# Ignore environment files with passwords
+.env
+
+# Ignore data folders
+data/
+
+# Ignore all log files
+*.log
+
+# Ignore python cache   
+__pycache__/
+
+# ignore .venv folder
+.venv/
