@@ -8,8 +8,7 @@ Phase 0 (setup and data exploration) in progress. Repository created; `.gitignor
 
 ## Next step
 
-1. Drop the test table. Update `.env.example` to `POSTGRES_HOST` / `POSTGRES_PORT=5433`. Commit.
-2. Explore the ONS hourly energy load dataset by hand (columns, grain, period covered, file format, data quality issues).
+1. Explore the ONS hourly energy load dataset by hand (columns, grain, period covered, file format, data quality issues).
 
 ## Phases
 
