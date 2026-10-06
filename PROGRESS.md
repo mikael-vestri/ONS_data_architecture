@@ -4,13 +4,12 @@ Project diary: where we are, what was decided and why. Updated at the end of eve
 
 ## Current status
 
-Phase 0 (setup and data exploration) in progress. Repository created; base files in place.
+Phase 0 (setup and data exploration) in progress. Repository created; `.gitignore`, `.env.example` and docs committed. Postgres 16 running in Docker, reachable from DBeaver on localhost:5433. Volume persistence verified (test table survived `docker compose down` / `up`). Remaining in Phase 0: explore the ONS data.
 
 ## Next step
 
-1. Write `.gitignore` (must include `.env` and the raw data folder) and `.env.example`, then make the first commit.
+1. Drop the test table. Update `.env.example` to `POSTGRES_HOST` / `POSTGRES_PORT=5433`. Commit.
 2. Explore the ONS hourly energy load dataset by hand (columns, grain, period covered, file format, data quality issues).
-3. Bring up PostgreSQL 16 with Docker Compose and connect to it (`SELECT version();`).
 
 ## Phases
 
@@ -34,6 +33,8 @@ Phase 0 (setup and data exploration) in progress. Repository created; base files
 | 2026-10-04 | dbt-core for transformations | Industry standard for SQL transformations with built-in testing and documentation | Plain SQL scripts |
 | 2026-10-04 | Repository content in English | Portfolio project, readable by any recruiter or reviewer | Portuguese |
 | 2026-10-04 | Secrets in `.env` (git-ignored) plus `.env.example` | Never leak credentials; still document required variables | Hard-coded values |
+| 2026-10-05 | Use the official image's variable names (`POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`) in `.env` | The official Postgres image reads these names directly, so no extra mapping is needed in docker-compose | Custom names (`DB_USER`, etc.) mapped in docker-compose |
+| 2026-10-06 | Expose Postgres on host port 5433 (`5433:5432`), configurable via `POSTGRES_PORT` | A native Windows PostgreSQL service already uses 5432; clients hitting localhost:5432 reached it instead of the container (auth failed, nothing in container logs) | Stop the native Postgres service |
 
 ## Open questions
 
